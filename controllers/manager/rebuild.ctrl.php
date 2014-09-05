@@ -56,7 +56,7 @@ class ManagerRebuildController extends \Sifo\Controller
 		}
 
 		// For each instance in the inheritance it regenerates his configuration files.
-		foreach( $instances_configuration as $instance )
+        foreach( $instances_configuration as $instance )
 		{
 			$current_instance		= $instance['current'];
 
@@ -78,7 +78,13 @@ class ManagerRebuildController extends \Sifo\Controller
 				$this->assign( 'file_name', $this->filenames[$file] );
 
 				$configs_content = $this->grabHtml();
-				$file_destination = ROOT_PATH . "/instances/" . $current_instance . "/config/" . $this->filenames[$file];
+
+                $file_destination = ROOT_PATH . "/instances/" . $current_instance . "/config/" . $this->filenames[$file];
+                if ($current_instance == 'common')
+                {
+                    $file_destination = ROOT_PATH . "/vendor/sifophp/sifo-common-instance/config/" . $this->filenames[$file];
+                }
+
 				$success = file_put_contents( $file_destination, $configs_content );
 				if ( !$success )
 				{
@@ -195,7 +201,16 @@ class ManagerRebuildController extends \Sifo\Controller
 		}
 		else
 		{
-			$available_files = $d->getFileListRecursive( ROOT_PATH . "/instances/" . $current_instance . "/$type" );
+			if ($current_instance == 'common')
+            {
+                $available_files = $d->getFileListRecursive( ROOT_PATH . "/vendor/sifophp/sifo-common-instance/" . "/$type" );
+                $path_files = "vendor/sifophp/sifo-common-instance";
+            }
+            else
+            {
+                $available_files = $d->getFileListRecursive(ROOT_PATH . "/instances/" . $current_instance . "/$type");
+                $path_files = "instances/$current_instance";
+            }
 
 			if ( is_array( $available_files ) === true && count( $available_files ) > 0 )
 			{
@@ -207,7 +222,7 @@ class ManagerRebuildController extends \Sifo\Controller
                     {
                         $rel_path = $this->cleanStartingSlash( $v["relative"] );
 
-                        $path = str_replace( '//', '/', "instances/$current_instance/$type/$rel_path" );
+                        $path = str_replace( '//', '/', $path_files . "/$type/$rel_path" );
 
                         // Calculate the class name for the given file:
                         $rel_path = str_replace( '.model.php', '', $rel_path );
@@ -216,15 +231,6 @@ class ManagerRebuildController extends \Sifo\Controller
                         $rel_path = str_replace( '.php', '', $rel_path ); // Default
 
                         $class = $this->getClassTypeStandarized( $rel_path );
-
-                        if ( 'default' != $current_instance )
-                        {
-                            $class_extended = $class . ucfirst( $current_instance );
-                        }
-                        else
-                        {
-                            $class_extended = $class;
-                        }
 
                         switch ( $type )
                         {
@@ -258,4 +264,3 @@ class ManagerRebuildController extends \Sifo\Controller
 	}
 
 }
-?>
