@@ -28,4 +28,3 @@ $config['twitter_oauth'] = 'vendor/sifophp/sifo-common-instance/config/twitter_o
 $config['url'] = 'vendor/sifophp/sifo-common-instance/config/url.config.php';
 $config['url_definition'] = 'vendor/sifophp/sifo-common-instance/config/url_definition.config.php';
 $config['views'] = 'vendor/sifophp/sifo-common-instance/config/views.config.php';
-

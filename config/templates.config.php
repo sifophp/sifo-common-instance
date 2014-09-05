@@ -37,4 +37,3 @@ $config['shared/media_packer.tpl'] = 'vendor/sifophp/sifo-common-instance/templa
 $config['shared/system_messages.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/shared/system_messages.tpl';
 $config['static/common.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/static/common.tpl';
 $config['user/login.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/user/login.tpl';
-
