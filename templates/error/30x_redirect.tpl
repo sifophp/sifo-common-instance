@@ -56,7 +56,7 @@ a { color: blue;}
 	var paused = false;
 
 	function init(){
-		//interval = setInterval( "rotate_icon()", 300 );
+		interval = setInterval( "rotate_icon()", 300 );
 	}
 	function rotate_icon(){
 		frame++;
