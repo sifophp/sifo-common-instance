@@ -1,7 +1,6 @@
 <?php
 namespace Common;
 
-include_once ROOT_PATH . '/instances/common/controllers/shared/commandLine.ctrl.php';
 include_once ROOT_PATH . '/vendor/sifophp/sifo/src/Amazon/S3.php';
 
 class ScriptsAmazonS3UploaderController extends SharedCommandLineController
@@ -154,4 +153,3 @@ HELP_TEXT;
 		$this->showMessage( "Finishing!", self::VERBOSE );
 	}
 }
-?>

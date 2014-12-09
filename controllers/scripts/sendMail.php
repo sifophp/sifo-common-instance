@@ -1,8 +1,6 @@
 <?php
 namespace Common;
 
-include_once ROOT_PATH . '/instances/common/controllers/shared/commandLine.ctrl.php';
-
 class ScriptsSendMailController extends SharedCommandLineController
 {
 	private $_subject;
@@ -44,7 +42,7 @@ class ScriptsSendMailController extends SharedCommandLineController
 		$this->setNewParam( 'F', 'filecontent', 'Mail body. Don\'t define this params to send  the stdin', true, true );
 		$this->setNewParam( 'H', 'html', 'Use this flag to send the mail with html code. Text is default.', false, false );
 	}
-	
+
 	public function exec()
 	{
 		$this->showMessage( "Starting the script", self::VERBOSE );
@@ -76,4 +74,3 @@ class ScriptsSendMailController extends SharedCommandLineController
 		$this->showMessage( "Finishing!", self::VERBOSE );
 	}
 }
-?>

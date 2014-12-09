@@ -1,8 +1,6 @@
 <?php
 namespace Common;
 
-include_once ROOT_PATH . '/instances/common/controllers/shared/commandLineController.ctrl.php';
-
 class ScriptsLoadAvgAutoswitchController extends SharedCommandLineController
 {
 	/**
@@ -104,7 +102,7 @@ namespace Common;';
 		if ( $this->test )
 		{
 			return true;
-		}	
+		}
 		$enabled_source =  $this->_getEnablingCode(). $this->_getFileContent();
 
 		return file_put_contents( $this->_root_page_path, $enabled_source );
@@ -141,7 +139,7 @@ namespace Common;';
 		$this->setNewParam( 'R', 'root-page-path', 'The first page loaded in your platform.', true, true );
 		$this->setNewParam( 'A', 'alternative-page-path', 'Define the absolute path to the replacement page.', true, true );
 	}
-	
+
 	public function exec()
 	{
 		$this->showMessage( "Starting the script", self::VERBOSE );
@@ -163,7 +161,7 @@ namespace Common;';
 					break;
 			}
 		}
-		
+
 		$current_load = $this->_getSystemLoad();
 		$this->showMessage( "The current sytem load is {$current_load}.", self::VERBOSE );
 
@@ -213,4 +211,3 @@ namespace Common;';
         }
 
 }
-?>

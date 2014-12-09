@@ -1,8 +1,6 @@
 <?php
 namespace Common;
 
-include_once ROOT_PATH . '/instances/common/controllers/shared/firstLevel.ctrl.php';
-
 class HomeIndexController extends SharedFirstLevelController
 {
 	protected $include_classes = array( 'FlashMessages', 'Pagination' );
@@ -150,4 +148,3 @@ class HomeIndexController extends SharedFirstLevelController
 		return array( 'name' => $cache_name, 'expiration' => 900 );
 	}
 }
-?>

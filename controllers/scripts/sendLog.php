@@ -1,8 +1,6 @@
 <?php
 namespace Common;
 
-include_once ROOT_PATH . '/instances/common/controllers/shared/commandLine.ctrl.php';
-
 class ScriptsSendLogController extends SharedCommandLineController
 {
 	private $_parsed_errors=array();
@@ -18,7 +16,7 @@ class ScriptsSendLogController extends SharedCommandLineController
 		}
 		array_multisort( $array_reference, SORT_DESC, $this->_parsed_errors );
 	}
-	
+
 	/**
 	 * Group the errors counting the repetitions.
 	 *
@@ -93,7 +91,7 @@ class ScriptsSendLogController extends SharedCommandLineController
 		$this->setNewParam( 'T', 'time', 'Define, in seconds, the time from which you want receive the log messages.', true, true );
 		$this->setNewParam( 'H', 'html', 'Use this option for dump the info in html format.', false, false );
 	}
-	
+
 	public function exec()
 	{
 		$this->showMessage( "Starting the script", self::VERBOSE );
@@ -125,4 +123,3 @@ class ScriptsSendLogController extends SharedCommandLineController
 		$this->showMessage( "Finishing!", self::VERBOSE );
 	}
 }
-?>

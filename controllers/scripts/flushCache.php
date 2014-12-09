@@ -1,8 +1,5 @@
 <?php
-
 namespace Common;
-
-include_once ROOT_PATH . '/instances/common/controllers/shared/commandLineController.ctrl.php';
 
 class ScriptsFlushCacheController extends SharedCommandLineController
 {
@@ -102,4 +99,3 @@ class ScriptsFlushCacheController extends SharedCommandLineController
 		$this->showMessage( "Finishing!", self::VERBOSE );
 	}
 }
-?>
