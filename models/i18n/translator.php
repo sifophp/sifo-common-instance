@@ -31,7 +31,7 @@ LEFT JOIN
 WHERE
     $filter_sql
 ORDER BY
-	m.id DESC, t.translation ASC, m.message ASC
+	IF(t.id_message IS NULL,0,1),LOWER(CONVERT(m.message USING utf8)),m.id
 TRANSLATIONS;
 
 		return $this->GetArray( $sql, array(

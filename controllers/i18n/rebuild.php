@@ -50,7 +50,7 @@ class I18nRebuildController extends \Sifo\Controller
 		{
 			$language_str = $translator->getTranslations( $language, $instance, $is_parent_instance );
 
-			foreach ( $language_str as $str )
+			foreach ( $language_str as $position => $str )
 			{
 				$msgid = $str['message'];
 				$msgstr = ( $str['translation'] == null ? '' : $str['translation'] );
@@ -59,7 +59,9 @@ class I18nRebuildController extends \Sifo\Controller
 			unset( $language_str );
 		}
 
-		ksort( $translations );
+		$messages_order = array_map( 'mb_strtolower', array_keys($translations) );
+		array_multisort( $messages_order, SORT_STRING, $translations );
+
 		$failed = array();
 		$result = true;
 
