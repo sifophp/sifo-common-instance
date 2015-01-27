@@ -25,6 +25,7 @@ $config['DebugMysql']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/Debug/Mysql.php';
 $config['DebugPredisProxyClient']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/Debug/PredisProxyClient.php';
 $config['DebugSearch']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/Debug/Search.php';
 $config['DebugSphinxql']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/Debug/Sphinxql.php';
+$config['DependencyInjector']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/DependencyInjector.php';
 $config['Dir']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/Dir.php';
 $config['DirectoryList']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/DirectoryList.php';
 $config['Domains']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/Domains.php';
