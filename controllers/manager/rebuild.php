@@ -2,6 +2,8 @@
 
 namespace Common;
 
+use Sifo\DependencyInjector;
+
 class ManagerRebuildController extends \Sifo\Controller
 {
 
@@ -35,6 +37,9 @@ class ManagerRebuildController extends \Sifo\Controller
 	 */
 	protected function rebuildFiles( Array $files )
 	{
+        // Generate the dependencies declaration file.
+        DependencyInjector::getInstance()->generateDependenciesDeclaration();
+
 		$this->setLayout( 'manager/templates.tpl' );
 
 		$output = array( );
