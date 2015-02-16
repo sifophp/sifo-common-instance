@@ -1,4 +1,4 @@
-{if is_array($debug.searches)}
+{if isset($debug.searches) && is_array($debug.searches)}
 	<h2 id="search_queries">{t}Searches{/t}</h2>
 {foreach name=search from=$debug.searches item=value}
 	<h3 class="queries query_read" id="search_{$smarty.foreach.search.index}"><a class="debug_toggle_view" rel="search_content_{$smarty.foreach.search.index}{$execution_key}" href="#">{$smarty.foreach.search.index+1}. [R] {$value.tag}</a> <small>({$value.time|time_format} - match: {$value.total_found|default:''} elements - return: {$value.returned_rows|default:''} elements )</small></h3>
