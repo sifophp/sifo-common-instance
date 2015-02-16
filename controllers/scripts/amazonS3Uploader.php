@@ -1,8 +1,6 @@
 <?php
 namespace Common;
 
-include_once ROOT_PATH . '/vendor/sifophp/sifo/src/Amazon/S3.php';
-
 class ScriptsAmazonS3UploaderController extends SharedCommandLineController
 {
 	private $config_file;
