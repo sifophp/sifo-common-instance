@@ -205,25 +205,30 @@ abstract class SharedCommandLineController extends \Sifo\Controller
 			case self::TEST:
 				if ( $this->test )
 				{
-					$this->_stdout .= $message . PHP_EOL;
+                    $this->addToOutput($message);
 					echo $message . PHP_EOL;
 				}
 				break;
 			case self::VERBOSE:
-				if ( $this->_verbose )
+                $this->addToOutput($message);
+                if ( $this->_verbose )
 				{
-					$this->_stdout .= $message . PHP_EOL;
 					echo $message . PHP_EOL;
 				}
 				break;
 			case self::ALL:
-				$this->_stdout .= $message . PHP_EOL;
+                $this->addToOutput($message);
 				echo $message . PHP_EOL;
 				break;
 			default:
 				throw new \OutOfBoundsException( 'Undefined in_mode selected.' );
 		}
 	}
+
+    protected function addToOutput($message_line)
+    {
+        $this->_stdout .= $message_line . PHP_EOL;
+    }
 
 	/**
 	 * Set a new exec param.
@@ -465,7 +470,7 @@ abstract class SharedCommandLineController extends \Sifo\Controller
 			$reformated_content .= $line . "<br />\n";   // Implode each line with a line break at the end
 		}
 		return str_replace( "\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $reformated_content ); //indent and return it
-	}
+    }
 
 	protected function sendMail()
 	{
