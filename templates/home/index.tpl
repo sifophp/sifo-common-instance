@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-{ $modules.head nofilter}
+ {$modules.head nofilter}
   <body>
 
     <div class="topbar">

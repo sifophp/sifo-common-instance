@@ -24,16 +24,16 @@
 	</div>
 </div>
 
-{    $modules.system_messages nofilter}
+    {$modules.system_messages nofilter}
 
 <div class="page-header">
 	<h1>Translation tool instance: {$instance|capitalize}</h1>
 </div>
 
-{        if $isAdmin}
+        {if $isAdmin}
 
 <div class="btn-toolbar">
-{	if $translations}
+	{if $translations}
 	<div class="btn-group">
 		<a class="btn" href="{$url.translate|default:''}:{$instance}" title="Translation status"><i class="icon-chevron-left"></i> Back to languages list</a>
 	</div>
@@ -62,9 +62,9 @@
 		</div>
 	</form>
 </div>
-{		/if}
+		{/if}
 
-{    if $translations}
+    {if $translations}
 <table class="table table-bordered table-striped">
 	<thead>
 	<tr>
@@ -78,7 +78,7 @@
 	</tr>
 	</thead>
 	<tbody>
-		{        foreach from=$translations key=key item=t}
+		        {foreach from=$translations key=key item=t}
 		<tr>
 			<td>
 				<label for="idmsg_{$t.id|default:''}" id="label_{$t.id|default:''}">{$t.message|escape:'html'|default:''|wordwrap:40:'<br />':true}</label>
@@ -107,10 +107,10 @@
 				<small>{$t.modified|default:''}<br/>by {$t.author|truncate:10|default:''}</small>
 			</td>
 		</tr>
-		{		/foreach}
+				{/foreach}
 	</tbody>
 </table>
-	{    else}
+	    {else}
 <h2>Current status of translations</h2>
 
 <p>Select a language to review its contents:</p>
@@ -120,7 +120,7 @@
 		<th>Status</th>
 		<th>Completeness</th>
 	</tr>
-	{        foreach from=$different_languages item=l key=key}
+	        {foreach from=$different_languages item=l key=key}
 		<tr>
 			<td>
 				<a href="{$url.translate|default:''}:{$instance}:{$l.lang|default:''}" title="Translate {$l.english_name|default:''}">{$l.english_name|default:''} ({$l.name|default:''})</a>
@@ -128,7 +128,7 @@
 			<td>{if $l.missing == 0}Translation complete{else}{$l.missing|default:''} strings missing{/if}</td>
 			<td class="btn-{if $l.percent >95}success{elseif $l.percent > 70}warning{else}danger{/if}">{$l.percent|default:''}%</td>
 		</tr>
-	{		/foreach}
+			{/foreach}
 </table>
 {/if}
 {literal}
@@ -187,7 +187,7 @@
 		$.ajax( {
 			type:"POST",
 			url:url_save,
-			data:{ id_message:id_message, lang:lang, translation:translation },
+			data: {id_message:id_message, lang:lang, translation:translation },
 			dataType:'json',
 			success:function ( txt ) {
 				if ( txt['status'] == 'OK' ) {

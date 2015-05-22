@@ -26,5 +26,5 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
 	{* Styles and JS is loaded inside this module: *}
-	{	$media_module}
+		{$media_module}
   </head>

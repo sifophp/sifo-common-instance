@@ -92,7 +92,7 @@ a { color: blue;}
 {if isset( $error ) }
 <body onload="init()">
 	<div id="redirect_info">
-		<h1>{ $error.code } Redirect exception</h1>
+		<h1>{$error.code} Redirect exception</h1>
 
 		Redirecting to...<br /> <a id='destination'
 			href='{$error.url_redirect}'>{$error.url_redirect}</a>

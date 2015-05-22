@@ -3,7 +3,7 @@
 {$modules.head nofilter}
 <body>
 <div id="wrapper" class="lang_{$url.lang}{if $links_new_window} new_window{/if}{if $rtl} rtl{/if}">
-{	$modules.header nofilter}
+	{$modules.header nofilter}
 <div id="contents" class="clearfix">
 {if isset($errors)}
 <div class="msg_ko">
@@ -29,9 +29,9 @@
 		</div>
 		<div class="submitrow">
 		<input type="submit" value="{t}Login{/t}" />
-{		if !$disable_register_text}
+		{if !$disable_register_text}
 		<p class="signup">{t}or{/t} <a href="{$url.signup}" title="{t}signup for a free account{/t}">{t escape=off}signup for a <strong>free account</strong>{/t}</a></p>
-{		/if}
+		{/if}
 		</div>
 	</fieldset>
 </form>

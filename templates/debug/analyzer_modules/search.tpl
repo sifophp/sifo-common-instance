@@ -58,20 +58,20 @@
 			<tr>
 				<th>WEIGHT</th>
 				<th>ID</th>
-{			foreach from=$query.resultset.attrs key=attribute item=values}
+			{foreach from=$query.resultset.attrs key=attribute item=values}
 				<th>{$attribute}</th>
-{			/foreach}
+			{/foreach}
 			</tr>
 {if isset( $query.resultset.matches )}
-{			foreach from=$query.resultset.matches key=id item=match}
+			{foreach from=$query.resultset.matches key=id item=match}
 			<tr>
 				<td>{$match.weight}</td>
 				<td>{$id}</td>
-{				foreach from=$match.attrs key=attribute item=values}
+				{foreach from=$match.attrs key=attribute item=values}
 				<td>{if is_array($values)}{$values|debug_print_var nofilter}{else}{$values}{/if}</td>
-{				/foreach}
+				{/foreach}
 			</tr>
-{			/foreach}
+			{/foreach}
 {/if}
 		</table>
 		{/foreach}

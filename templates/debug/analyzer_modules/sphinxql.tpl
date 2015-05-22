@@ -40,19 +40,19 @@
 	{if !empty( $query.resultset[0] )}
 		<table>
 			<tr>
-{			foreach from=$query.resultset[0] key=attribute item=values}
+			{foreach from=$query.resultset[0] key=attribute item=values}
 				<th>{$attribute}</th>
-{			/foreach}
+			{/foreach}
 
 			</tr>
 {if isset( $query.resultset )}
-{			foreach from=$query.resultset key=id item=match}
+			{foreach from=$query.resultset key=id item=match}
 			<tr>
-{				foreach from=$match key=attribute item=values}
+				{foreach from=$match key=attribute item=values}
 				<td>{if is_array($values)}{$values|debug_print_var nofilter}{else}{$values}{/if}</td>
-{				/foreach}
+				{/foreach}
 			</tr>
-{			/foreach}
+			{/foreach}
 {/if}
 		</table>
 	{else}

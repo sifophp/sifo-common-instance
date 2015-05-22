@@ -6,12 +6,12 @@
 		{$smarty.foreach.queries.index+1}. {if $query.type=='read'}[R]{else}[W]{/if} {$query.tag}</a> <small>({$query.time|time_format} - rows:{$query.rows_num})</small></h3>
 	<div id="queries_content_{$smarty.foreach.queries.index}{$execution_key}" class="debug_contents">
 		<pre>{$query.sql|escape}</pre>
-{		if false !== $query.error}
+		{if false !== $query.error}
 		<pre style="color:red">
 --
 {$query.error}
 		</pre>
-{		/if}
+		{/if}
 		<table>
 			<tr>
 				<th>Host</th>
@@ -28,46 +28,46 @@
 				<td>{if isset($query.controller)}{$query.controller}{/if}</td>
 			</tr>
 		</table>
-{		if $query.rows_num > 0 }
+		{if $query.rows_num > 0 }
 			<strong>{t}Resultset{/t}</strong>:
 			<table>
 
 {*		RESPONSE CONTAINS AN ARRAY WITH A SINGLE RECRODSET AND ITS PROPERTIES *}
-{			if is_array($query.resultset) && !isset($query.resultset[0])}
+			{if is_array($query.resultset) && !isset($query.resultset[0])}
 			<tr>
-{			foreach from=$query.resultset item=value key=field}
+			{foreach from=$query.resultset item=value key=field}
 				<th>{$field}</th>
-{			/foreach}
+			{/foreach}
 			</tr>
 			<tr>
-{			foreach from=$query.resultset item=value}
+			{foreach from=$query.resultset item=value}
 				<td title="{$value|escape}">{$value|truncate:50:"..."|escape}</td>
-{			/foreach}
+			{/foreach}
 			</tr>
-{			else}
+			{else}
 {*		RESPONSE CONTAINS AN ARRAY WITH ALL THE ROWS *}
-{			if is_array($query.resultset)}
+			{if is_array($query.resultset)}
 			<tr>
-{			foreach from=$query.resultset[0] item=value key=field}
+			{foreach from=$query.resultset[0] item=value key=field}
 				<th>{$field}</th>
-{			/foreach}
+			{/foreach}
 			</tr>
-{			foreach from=$query.resultset item=row}
+			{foreach from=$query.resultset item=row}
 			<tr>
-{				foreach from=$row item=value}
+				{foreach from=$row item=value}
 					<td title="{$value|escape}">{$value|truncate:50:"..."|escape}</td>
-	{				/foreach}
+					{/foreach}
 				</tr>
-	{			/foreach}
+				{/foreach}
 		{else}
 			{* STRANGE FORMAT OF DATA *}
 			<tr><td><pre>{$query.resultset|@var_dump}</pre></td></tr>
 		{/if}
-{			/if}
+			{/if}
 			</table>
-{		else}
+		{else}
 			<strong>{t}Empty resultset{/t}</strong>
-{		/if}
+		{/if}
 {if isset($query.trace) }<pre>{$query.trace}</pre>{/if}
 	</div>
 {/foreach}
