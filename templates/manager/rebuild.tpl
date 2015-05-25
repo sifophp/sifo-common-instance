@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Rebuild for {$inheritance}</title>
+    <title>Rebuild for {$inheritance.0|capitalize}</title>
 </head>
 <style>
 {literal}

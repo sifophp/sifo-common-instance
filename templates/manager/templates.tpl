@@ -1,4 +1,4 @@
-<?php
+{"<?php"}
 {if !empty( $instance_parent )}
 {if $instance_parent == 'common'}
 include ROOT_PATH . '/vendor/sifophp/sifo-common-instance/config/{$file_name}';
@@ -15,5 +15,3 @@ $config['{$k}']['{$instance}'] = '{$path}';
 $config['{$k}'] = '{$c}';
 	{/if}
 {/foreach}
-
-{*$config = {$config|@var_export};*}
