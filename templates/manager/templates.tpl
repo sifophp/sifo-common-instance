@@ -6,12 +6,13 @@ include ROOT_PATH . '/vendor/sifophp/sifo-common-instance/config/{$file_name}';
 include ROOT_PATH . '/instances/{$instance_parent}/config/{$file_name}';
 {/if}
 {/if}
+
 {foreach from=$config item=c key=k}
-	{if is_array( $c ) }
-		{foreach from=$c item=path key=instance}
+{if is_array( $c ) }
+{foreach from=$c item=path key=instance}
 $config['{$k}']['{$instance}'] = '{$path}';
-		{/foreach}
-	{else}
+{/foreach}
+{else}
 $config['{$k}'] = '{$c}';
-	{/if}
+{/if}
 {/foreach}
