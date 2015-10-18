@@ -132,8 +132,8 @@ class ManagerFindi18nController extends \Sifo\Controller
 		$literals_groups['forms'] = $this->extractStringsForTranslation( "$path/config", $instance, false );
 
 		// Smarty plugins:
-		$libs_path = ROOT_PATH . \Sifo\Config::getInstance()->getLibrary( 'smarty' ) . '/plugins';
-		$literals_groups['smarty'] = $this->extractStringsForTranslation( $libs_path, 'libs', false );
+		$sifo_plugins_path = ROOT_PATH . '/vendor/sifophp/sifo/src/Smarty-sifo-plugins';
+		$literals_groups['smarty'] = $this->extractStringsForTranslation( $sifo_plugins_path, 'libs', false );
 
 		// Your instance plugins:
 		$instance_plugins = $path . '/templates/_smarty/plugins';
