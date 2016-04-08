@@ -60,7 +60,6 @@ $config['Urls']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/Urls.php';
 $config['View']['Sifo'] = 'vendor/sifophp/sifo/src/Sifo/View.php';
 $config['HelperPasswordGenerator']['Common'] = 'vendor/sifophp/sifo-common-instance/classes/HelperPasswordGenerator.php';
 $config['Inviter']['Common'] = 'vendor/sifophp/sifo-common-instance/classes/inviter.php';
-$config['Krumo']['Common'] = 'vendor/sifophp/sifo-common-instance/classes/Krumo.php';
 $config['MailExt']['Common'] = 'vendor/sifophp/sifo-common-instance/classes/MailExt.php';
 $config['Pagination']['Common'] = 'vendor/sifophp/sifo-common-instance/classes/Pagination.php';
 $config['DebugActionsController']['Common'] = 'vendor/sifophp/sifo-common-instance/controllers/debug/actions.php';
