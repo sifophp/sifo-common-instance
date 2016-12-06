@@ -1,19 +1,15 @@
 {* HTML messages *}
 {if isset( $debug.log_messages.html )}
 	<h2 id="benchmarks">{t}Log Messages{/t}</h2>
+	<div class="debug_contents" style="display:block;">
 	{foreach from=$debug.log_messages.html item=value name=html_log}
-	<h3 id="html_log_{$smarty.foreach.html_log.index}" class="{if $value.type=='error'}query_error{/if}{if $value.type=='warn'}query_duplicated{/if}">
-		<a class="debug_toggle_view" rel="html_log_content_{$smarty.foreach.html_log.index}" href="#">
-			{$smarty.foreach.html_log.index+1}. Message {$value.type}
-		</a>
-	</h3>
-	<div id="html_log_content_{$smarty.foreach.html_log.index}" class="debug_contents">
-			<pre>
-				{$value.message|debug_print_var nofilter}
-			</pre>
-		</div>
-
+		{if $value.message|@is_object || $value.message|@is_array}
+			<pre>[{$value.type|upper} {$smarty.foreach.html_log.index+1}] {$value.message|debug_print_var nofilter}</pre>
+		{else}
+			<pre>[{$value.type|upper} {$smarty.foreach.html_log.index+1}] {$value.message}</pre>
+		{/if}
 	{/foreach}
+	</div>
 {/if}
 
 {* Console messages *}
