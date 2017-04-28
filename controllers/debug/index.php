@@ -23,7 +23,7 @@ class FilterCookieDebug extends \Sifo\FilterCookie
 	}
 }
 
-class DebugIndexController extends \Sifo\Controller
+class DebugIndexController extends \Sifo\Controller\Controller
 {
 	/**
 	 * @var string Identifier of the current request execution.

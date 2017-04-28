@@ -2,7 +2,7 @@
 
 namespace Common;
 
-class I18nSaveController extends \Sifo\Controller
+class I18nSaveController extends \Sifo\Controller\Controller
 {
 	public $is_json = true;
 

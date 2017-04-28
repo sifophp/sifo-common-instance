@@ -2,7 +2,7 @@
 
 namespace Common;
 
-class ErrorCommonController extends \Sifo\Controller
+class ErrorCommonController extends \Sifo\Controller\Controller
 {
 
 	public function build()

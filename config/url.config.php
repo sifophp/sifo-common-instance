@@ -6,8 +6,6 @@ $config['subdomain'] = $subdomain = \Sifo\Domains::getInstance()->getSubdomain()
 $config['lang']      = $subdomain = \Sifo\Domains::getInstance()->getLanguage();
 $config['static']    = \Sifo\Domains::getInstance()->getStaticHost();
 
-$config['mail-continue'] = $base . '/mail-continue';
-
 // Sifo debug
 $config['sifo_debug_analyzer'] = $base . '/sifo-debug-analyzer';
 $config['sifo_debug_actions']  = $base . '/sifo-debug-actions';

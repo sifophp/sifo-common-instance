@@ -4,7 +4,7 @@ namespace Common;
 
 use Sifo\DebugDataBaseHandler;
 
-class DebugAnalyzerController extends \Sifo\Controller
+class DebugAnalyzerController extends \Sifo\Controller\Controller
 {
 	/**
 	 * @var DebugDataBaseHandler Class responsible of dealing with stored debugs executions

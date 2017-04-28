@@ -47,9 +47,6 @@ $config['translation-actions'] = 'i18n/actions';
 $config['sifo-debug-analyzer'] = 'debug/analyzer';
 $config['sifo-debug-actions'] = 'debug/actions';
 
-// Used in debug mode Mail Interception.
-$config['mail-continue'] = 'debug/mail';
-
 // Template simulator
 $config['template-launcher'] = 'manager/templateLauncher';
 

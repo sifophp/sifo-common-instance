@@ -4,7 +4,7 @@ namespace Common;
 /**
  * Create common sets of actions for all controllers
  */
-abstract class SharedFirstLevelController extends \Sifo\Controller
+abstract class SharedFirstLevelController extends \Sifo\Controller\Controller
 {
 	abstract public function buildCommon();
 

@@ -4,7 +4,7 @@ namespace Common;
 
 use Sifo\DebugDataBaseHandler;
 
-class DebugActionsController extends \Sifo\Controller
+class DebugActionsController extends \Sifo\Controller\Controller
 {
 	public $is_json = true;
 

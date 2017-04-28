@@ -2,7 +2,7 @@
 
 namespace Common;
 
-class I18nRebuildController extends \Sifo\Controller
+class I18nRebuildController extends \Sifo\Controller\Controller
 {
 	public $is_json = true;
 

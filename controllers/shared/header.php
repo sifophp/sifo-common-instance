@@ -2,7 +2,7 @@
 
 namespace Common;
 
-class SharedHeaderController extends \Sifo\Controller
+class SharedHeaderController extends \Sifo\Controller\Controller
 {
 	public function build()
 	{

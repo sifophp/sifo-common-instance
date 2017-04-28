@@ -1,11 +1,10 @@
 <?php
 namespace Common;
 
-class SharedSystemMessagesController extends \Sifo\Controller
+class SharedSystemMessagesController extends \Sifo\Controller\Controller
 {
 	public function build()
 	{
-		$this->getClass( 'FlashMessages', false );
 		$this->setLayout( 'shared/system_messages.tpl' );
 
 		$this->assign( 'info_messages', \Sifo\FlashMessages::get( \Sifo\FlashMessages::MSG_INFO ) );

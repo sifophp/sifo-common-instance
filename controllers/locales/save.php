@@ -7,7 +7,7 @@ namespace Common;
  * Save translations into files.
  * @author edufabra
  */
-class localesSaveController extends \Sifo\Controller
+class localesSaveController extends \Sifo\Controller\Controller
 {
 
 	/**

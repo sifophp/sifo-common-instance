@@ -7,7 +7,7 @@ namespace Common;
  * Parses all the controllers and templates and adds the missing translations to the array. No deletion is done.
  * If you want to delete a string must be deleted from every locale.
  */
-class ManagerRebuildi18nLocalController extends \Sifo\Controller
+class ManagerRebuildi18nLocalController extends \Sifo\Controller\Controller
 {
 	const MASTER_LANGUAGE = 'en_US';
 

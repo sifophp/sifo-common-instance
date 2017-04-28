@@ -1,8 +1,6 @@
 <?php
 namespace Common;
 
-namespace Common;
-
 /**
  * Root locale controller
  * @author edufabra
@@ -21,13 +19,13 @@ class LocalesIndexController extends \Sifo\Controller
 		$this->addModule( 'head', 'SharedHead' );
 		$this->addModule( 'footer', 'SharedFooter' );
 		$this->addModule( 'system_messages', 'SharedSystemMessages' );
-		
+
 		$params = $this->getParams();
 		$action = \Sifo\Router::getReversalRoute( $params['path_parts'][0] );
 
 		$params = $this->getParams();
 
-		
+
 		if ( $params['params'] !== false && in_array('saved-true', $params["params"]))
 		{
 			\Sifo\FlashMessages::set( 'File Saved OK.', \Sifo\FlashMessages::MSG_OK );

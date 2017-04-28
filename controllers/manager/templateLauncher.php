@@ -2,7 +2,7 @@
 
 namespace Common;
 
-class ManagerTemplateLauncherController extends \Sifo\Controller
+class ManagerTemplateLauncherController extends \Sifo\Controller\Controller
 {
 
 	private $_available_templates;

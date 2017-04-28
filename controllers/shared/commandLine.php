@@ -1,7 +1,7 @@
 <?php
 namespace Common;
 
-abstract class SharedCommandLineController extends \Sifo\Controller
+abstract class SharedCommandLineController extends \Sifo\Controller\Controller
 {
 	const TEST		= 'TEST';
 	const VERBOSE	= 'VERBOSE';

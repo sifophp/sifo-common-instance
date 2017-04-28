@@ -6,7 +6,7 @@ namespace Common;
  *
  * Keeps the router_xx_XX files syncronized with the router_en_US or whatever you set your master file.
  */
-class ManagerRebuildRouterController extends \Sifo\Controller
+class ManagerRebuildRouterController extends \Sifo\Controller\Controller
 {
 	const MASTER_LANGUAGE = 'en_US';
 

@@ -20,11 +20,11 @@ namespace Common;
  * @version 1.0
  *
  */
-class SharedAdvertisingController extends \Sifo\Controller
+class SharedAdvertisingController extends \Sifo\Controller\Controller
 {
 	public function build()
 	{
-		
+
 		$module = $this->getParam( 'module_name' );
 
 		try
@@ -37,7 +37,7 @@ class SharedAdvertisingController extends \Sifo\Controller
 			}
 
 			$this->assign( 'ad', $ads_config );
-			
+
 		}
 		catch( \Sifo\Exception_Configuration $e )
 		{
@@ -46,6 +46,6 @@ class SharedAdvertisingController extends \Sifo\Controller
 			$this->setLayout( 'empty.tpl' );
 		}
 
-		
+
 	}
 }

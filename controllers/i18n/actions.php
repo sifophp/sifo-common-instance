@@ -2,7 +2,7 @@
 
 namespace Common;
 
-class I18nActionsController extends \Sifo\Controller
+class I18nActionsController extends \Sifo\Controller\Controller
 {
 	public $is_json = true;
 
@@ -92,7 +92,7 @@ class I18nActionsController extends \Sifo\Controller
 
 		return $result;
 	}
-	
+
 	/**
 	 * Define accepted params for this controller.
 	 *
