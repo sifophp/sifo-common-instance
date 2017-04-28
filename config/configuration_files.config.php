@@ -5,7 +5,6 @@ $config['ads'] = 'vendor/sifophp/sifo-common-instance/config/ads.config.php';
 $config['cache'] = 'vendor/sifophp/sifo-common-instance/config/cache.config.php';
 $config['css'] = 'vendor/sifophp/sifo-common-instance/config/css.config.php';
 $config['db_profiles'] = 'vendor/sifophp/sifo-common-instance/config/db_profiles.config.php';
-$config['debug_config'] = 'vendor/sifophp/sifo-common-instance/config/debug_config.config.php';
 $config['domains'] = 'vendor/sifophp/sifo-common-instance/config/domains.config.php';
 $config['forms/example.form'] = 'vendor/sifophp/sifo-common-instance/config/forms/example.form.config.php';
 $config['js'] = 'vendor/sifophp/sifo-common-instance/config/js.config.php';
