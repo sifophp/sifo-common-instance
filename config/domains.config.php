@@ -39,7 +39,7 @@
 	),
 	'php_ini_sets' => array(  // Changes in php.ini conf. You'd better make changes in your php.ini and leave this array empty.
 		'log_errors' => 'On',
-		'error_log' => ROOT_PATH . '/logs/errors.log',
+		'error_log' => ROOT_PATH . '/var/log/errors.log',
 		'short_open_tag' => '1'
 	).
 	'libraries_profile' => 'default', // This profile defines the versions of libraries your project will use.
@@ -48,12 +48,8 @@
 	Redirections use the EXACT term in the host, and needs the format
 	$config['redirections'] = array( array( 'from' => 'domain.old', 'to' => 'http://domain.new' ), array( 'from' => 'domain2.old', 'to' => 'http://domain.new' ),... );
 	FROM: is only the host while TO contains the protocol.
-
-	Use $config['core_inheritance'] for active new versions of core.
-		$config['core_inheritance'] = array( 'Sifo', 'Sifo5.3' );  // For work with SIFO for php5.3
  */;
 
-$config['core_inheritance'] = array( 'Sifo' );
 // Define the inheritance of this instance (which instances are their parents:
 // $config['instance_inheritance'] = array( 'common', 'mygrandparent', 'myparent' );
 
