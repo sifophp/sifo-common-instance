@@ -3,7 +3,6 @@
 $config['301_rules'] = 'vendor/sifophp/sifo-common-instance/config/301_rules.config.php';
 $config['ads'] = 'vendor/sifophp/sifo-common-instance/config/ads.config.php';
 $config['cache'] = 'vendor/sifophp/sifo-common-instance/config/cache.config.php';
-$config['classes'] = 'vendor/sifophp/sifo-common-instance/config/classes.config.php';
 $config['css'] = 'vendor/sifophp/sifo-common-instance/config/css.config.php';
 $config['db_profiles'] = 'vendor/sifophp/sifo-common-instance/config/db_profiles.config.php';
 $config['debug_config'] = 'vendor/sifophp/sifo-common-instance/config/debug_config.config.php';
