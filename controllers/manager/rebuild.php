@@ -14,7 +14,6 @@ class ManagerRebuildController extends \Sifo\Controller
 	protected $filenames = array(
 		'config' => 'configuration_files.config.php',
 		'templates' => 'templates.config.php',
-		'classes' => 'classes.config.php',
 		'locale' => 'locale.config.php'
 	);
 
@@ -114,7 +113,6 @@ class ManagerRebuildController extends \Sifo\Controller
 		$files_output = $this->rebuildFiles( array(
 			'config' => array( 'config' ),
 			'templates' => array( 'templates' ),
-			'classes' => array( 'core', 'classes', 'controllers', 'models' ),
 			'locale' => array( 'locale' ),
 		) );
 
@@ -230,8 +228,6 @@ class ManagerRebuildController extends \Sifo\Controller
                         $path = str_replace( '//', '/', $path_files . "/$type/$rel_path" );
 
                         // Calculate the class name for the given file:
-                        $rel_path = str_replace( '.model.php', '', $rel_path );
-                        $rel_path = str_replace( '.ctrl.php', '', $rel_path );
                         $rel_path = str_replace( '.config.php', '', $rel_path );
                         $rel_path = str_replace( '.php', '', $rel_path ); // Default
 
@@ -239,17 +235,6 @@ class ManagerRebuildController extends \Sifo\Controller
 
                         switch ( $type )
                         {
-                            case 'controllers':
-                                $class .= 'Controller';
-                                $type_files[$class][ucfirst( $current_instance )] = $path;
-                                break;
-                            case 'models':
-                                $class .= 'Model';
-                                $type_files[$class][ucfirst( $current_instance )] = $path;
-                                break;
-                            case 'classes':
-                                $type_files[$class][ucfirst( $current_instance )] = $path;
-                                break;
                             case 'config':
                                 if ( $rel_path == 'configuration_files' )
                                 {
