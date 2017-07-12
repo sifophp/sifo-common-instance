@@ -210,6 +210,9 @@
 		{* SphinxQl and other search-related queries *}
 		{include file="debug/analyzer_modules/sphinxql.tpl"|custom_tpl debug=$debug_data.parent_execution.debug_content execution_key=$debug_data.parent_execution.execution_key}
 
+		{* ElasticSearch and other search-related queries *}
+		{include file="debug/analyzer_modules/elastic_search.tpl"|custom_tpl debug=$debug_data.parent_execution.debug_content execution_key=$debug_data.parent_execution.execution_key}
+
 		{* Sphinx and other search-related queries *}
 		{include file="debug/analyzer_modules/search.tpl"|custom_tpl debug=$debug_data.parent_execution.debug_content execution_key=$debug_data.parent_execution.execution_key}
 

@@ -133,6 +133,14 @@
 				<dt class="no-hide query_error">{t}SphinxQL errors{/t}</dt>
 				<dd class="no-hide query_error"><strong>{$debug.sphinxql_errors|@count}</strong></dd>
 			{/if}
+			{if $debug.times.elastic_search}
+				<dt>{t}Elastic Search{/t} <small>(<a href="{$url.sifo_debug_analyzer}?execution_key={$execution_key}#elasticsearch_queries" target="_blank">{t 1=$debug.elements.elastic_search}%1 searches{/t}</a>)</small></dt>
+				<dd><span>{math equation="y / x * 100" x=$debug.times.total y=$debug.times.elastic_search format="%.0f"}%</span>{$debug.times.elastic_search|time_format}</dd>
+			{/if}
+			{if $debug.elastic_search_errors|default:false}
+				<dt class="no-hide query_error">{t}Elastic Search errors{/t}</dt>
+				<dd class="no-hide query_error"><strong>{$debug.elastic_search_errors|@count}</strong></dd>
+			{/if}
 			{if $debug.times.cache}
 				<dt>{t}Cache{/t} <small>(<a href="{$url.sifo_debug_analyzer}?execution_key={$execution_key}#controllers" target="_blank">{t 1=$debug.elements.cache}%1 blocks{/t}</a>)</small></dt>
 				<dd><span>{math equation="y / x * 100" x=$debug.times.total y=$debug.times.cache format="%.0f"}%</span>{$debug.times.cache|time_format}</dd>
@@ -205,7 +213,7 @@
 
 			// Function used as a dummy callback by the Sifo debug linker JSONP call in order to be able to call it from different sub-domains.
 			function foo() {}
-			
+
 			function waitingForScript(url, obj) {
 				// doesn't work in Opera
 				var callback = arguments.callee.caller;

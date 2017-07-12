@@ -5,6 +5,7 @@ $config['debug/analyzer.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/d
 $config['debug/analyzer_modules/basic_debug.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/debug/analyzer_modules/basic_debug.tpl';
 $config['debug/analyzer_modules/cookies.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/debug/analyzer_modules/cookies.tpl';
 $config['debug/analyzer_modules/database.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/debug/analyzer_modules/database.tpl';
+$config['debug/analyzer_modules/elastic_search.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/debug/analyzer_modules/elastic_search.tpl';
 $config['debug/analyzer_modules/headers.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/debug/analyzer_modules/headers.tpl';
 $config['debug/analyzer_modules/log_messages.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/debug/analyzer_modules/log_messages.tpl';
 $config['debug/analyzer_modules/post.tpl'] = 'vendor/sifophp/sifo-common-instance/templates/debug/analyzer_modules/post.tpl';
