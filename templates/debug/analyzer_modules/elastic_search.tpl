@@ -30,7 +30,10 @@
 			</tr>
 		</table>
 
-		{if !empty( $search.error )}<pre class="query_error">{$search.error}</pre>{/if}
+		{if !empty( $search.error )}
+			<b>Error Message: </b>
+			<pre style="color:red">{$search.error}</pre>
+		{/if}
 
 	<b>Resultset:</b>
 
