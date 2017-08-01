@@ -4,6 +4,9 @@
 	<h3 class="queries query_read{if $search.error} query_error{/if}" id="elastic_search_{$index}"><a class="debug_toggle_view" rel="elastic_search_content_{$index}{$execution_key}" href="#">{$index+1}. {$search.tag}</a> <small>({$search.time|time_format} - match: {$search.number_of_rows|default:''} elements - return: {$search.number_of_rows|default:''} elements )</small></h3>
 	<div id="elastic_search_content_{$index}{$execution_key}" class="debug_contents">
 
+		<pre>{$search.query.body}</pre>
+		<b>Query Tag: </b>{$search.tag}
+
 		<table>
 			<tr>
 				<th>Cluster id</th>
@@ -28,10 +31,11 @@
 		</table>
 
 		{if !empty( $search.error )}
-		<h4 class="query_error">{$search.error}</h4>
+			<b>Error Message: </b>
+			<pre style="color:red">{$search.error}</pre>
 		{/if}
-		{if !empty( $query.error )}<p class="query_error"><b>{$search.error}</b></p>{/if}
-		<pre>{$search.query.body}</pre>
+
+	<b>Resultset:</b>
 
 	{if !empty( $search.results )}
 		<table>
