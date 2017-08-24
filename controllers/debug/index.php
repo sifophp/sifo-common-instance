@@ -88,6 +88,10 @@ class DebugIndexController extends \Sifo\Controller
 		$debug_data['sphinxql']        = \Sifo\Debug::get( 'sphinxql' );
 		$debug_data['sphinxql_errors'] = \Sifo\Debug::get( 'sphinxql_errors' );
 
+		// ElasticSearch debug.
+		$debug_data['elastic_search']        = \Sifo\Debug::get( 'elastic_search' );
+		$debug_data['elastic_search_errors'] = \Sifo\Debug::get( 'elastic_search_errors' );
+
 		// Redis debug.
 		$debug_data['redis'] = \Sifo\Debug::get( 'redis' );
 
