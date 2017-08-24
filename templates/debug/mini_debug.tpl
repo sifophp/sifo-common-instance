@@ -133,7 +133,7 @@
 				<dt class="no-hide query_error">{t}SphinxQL errors{/t}</dt>
 				<dd class="no-hide query_error"><strong>{$debug.sphinxql_errors|@count}</strong></dd>
 			{/if}
-			{if $debug.times.elastic_search}
+			{if $debug.times.elastic_search|default:false}
 				<dt>{t}Elastic Search{/t} <small>(<a href="{$url.sifo_debug_analyzer}?execution_key={$execution_key}#elasticsearch_queries" target="_blank">{t 1=$debug.elements.elastic_search}%1 searches{/t}</a>)</small></dt>
 				<dd><span>{math equation="y / x * 100" x=$debug.times.total y=$debug.times.elastic_search format="%.0f"}%</span>{$debug.times.elastic_search|time_format}</dd>
 			{/if}
