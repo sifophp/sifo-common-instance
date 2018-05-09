@@ -69,7 +69,7 @@ class Pagination
 	/**
 	 * The total number of items.
 	 *
-	 * @var integer.
+	 * @var integer
 	 */
 	protected $items_total;
 

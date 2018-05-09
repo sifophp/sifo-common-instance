@@ -20,7 +20,7 @@ class ScriptsSendLogController extends SharedCommandLineController
 	/**
 	 * Group the errors counting the repetitions.
 	 *
-	 * @param $date_time Is the date time ( in timestamp format) used to starts the agrupation.
+	 * @param int $date_time Is the date time ( in timestamp format) used to starts the agrupation.
 	 */  ///\[(.+)\]\sPHP\s([Notice|Warning|Error].* )/
 	private function _groupErrors( $date_time = 0 )
 	{

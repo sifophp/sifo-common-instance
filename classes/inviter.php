@@ -16,11 +16,6 @@ include_once ROOT_PATH . '/vendor/sifophp/sifo/src/OpenInviter/openinviter.php';
 
 class Inviter
 {
-
-	/**
-	 * Facebook Object
-	 * @var facebook
-	 */
 	protected $inviterObj;
 	protected $active_plugins = array();
 

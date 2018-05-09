@@ -159,7 +159,7 @@ abstract class SharedCommandLineController extends \Sifo\Controller
 	 * $this->showMessage( 'Example message', self::VERBOSE, array( 'background' => 'red', 'indent' => 4 ) );
 	 *
 	 * @param string $message
-	 * @param object|string $in_mode (by default: self::ALL)
+	 * @param string $in_mode (by default: self::ALL)
 	 * @param array $params (optional array keys: indent, foreground and background)
 	 * @throws \OutOfBoundsException
 	 */
@@ -233,7 +233,7 @@ abstract class SharedCommandLineController extends \Sifo\Controller
 	/**
 	 * Set a new exec param.
 	 *
-	 * @param char $short_param_name The short option id.
+	 * @param string $short_param_name The short option id.
 	 * @param string $long_param_name The long name option.
 	 * @param string $help_string The help string.
 	 * @param boolean $need_second_param True if needs a param.
@@ -598,7 +598,7 @@ abstract class SharedCommandLineController extends \Sifo\Controller
      * Method input: dest
      * Return: [test, destination_uri, destination_bucket]
      *
-     * @param $undefined_option string
+     * @param string $undefined_option
      *
      * @return array
      */
@@ -620,8 +620,8 @@ abstract class SharedCommandLineController extends \Sifo\Controller
      * Input example: dest, [help, test, verbose, ..., destination_bucket, destination_uri, acl]
      * Return: [test, destination_uri, destination_bucket]
      *
-     * @param $unknown_word string
-     * @param $possible_words array
+     * @param string $unknown_word
+     * @param array $possible_words
      *
      * @return array
      */
