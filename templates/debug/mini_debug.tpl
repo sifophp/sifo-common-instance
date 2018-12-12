@@ -261,7 +261,7 @@
 				$(document).ready( function(){
 
 					if (parseFloat(jQuery.fn.jquery) >= 1.8) {
-						$.getScript('http://code.jquery.com/jquery-migrate-1.0.0.js' ).done( debugBehaviours );
+						$.getScript('//code.jquery.com/jquery-migrate-1.0.0.js' ).done( debugBehaviours );
 					} else {
 						debugBehaviours();
 					}
