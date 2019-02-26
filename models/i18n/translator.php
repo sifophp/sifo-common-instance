@@ -21,17 +21,28 @@ class I18nTranslatorModel extends \Sifo\Model
 			$filter_sql = '( m.instance = ? OR m.instance IS NULL ) AND ( t.instance = ? OR t.instance IS NULL )';
 		}
 
-		$sql = <<<TRANSLATIONS
+        $sql = <<<TRANSLATIONS
 SELECT
-	*
+	m.id,
+	m.message,
+	m.comment,
+	IF(t1.instance IS NOT NULL, t1.instance, t2.instance) AS instance,
+	m.id AS id_message,
+	l.lang,
+    IF(t1.translation IS NOT NULL, t1.translation, t2.translation) AS translation,
+    IF(t1.author IS NOT NULL, t1.author, t2.author) AS author,
+    IF(t1.modified IS NOT NULL, t1.modified, t2.modified) AS modified,
+    IF(t1.translation IS NOT NULL, 0, 1) as is_base_lang
+    
 FROM
-	`i18n_messages` m
-LEFT JOIN
-	i18n_translations t ON m.id=t.id_message AND lang = ?
+	i18n_messages m
+	LEFT JOIN i18n_translations t1 ON m.id = t1.id_message AND t1.lang = ?
+	LEFT JOIN i18n_languages l ON l.lang = ?
+	LEFT JOIN i18n_translations t2 ON m.id = t2.id_message AND t2.lang = l.parent_lang
 WHERE
     $filter_sql
 ORDER BY
-	IF(t.id_message IS NULL,0,1),LOWER(CONVERT(m.message USING utf8)),m.id
+	IF(t1.id_message IS NULL OR t2.id_message IS NULL,0,1),LOWER(CONVERT(m.message USING utf8)),m.id
 TRANSLATIONS;
 
 		return $this->GetArray( $sql, array(
