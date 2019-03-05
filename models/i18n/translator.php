@@ -15,39 +15,76 @@ class I18nTranslatorModel extends \Sifo\Model
 	 */
 	public function getTranslations( $language, $instance, $parent_instance = false )
 	{
-		$filter_sql = 'm.instance = ? OR t.instance = ?';
-		if ( $parent_instance )
-		{
-			$filter_sql = '( m.instance = ? OR m.instance IS NULL ) AND ( t.instance = ? OR t.instance IS NULL )';
-		}
-
         $sql = <<<TRANSLATIONS
-SELECT
-	m.id,
-	m.message,
-	m.comment,
-	IF(t1.instance IS NOT NULL, t1.instance, t2.instance) AS instance,
-	m.id AS id_message,
-	l.lang,
-    IF(t1.translation IS NOT NULL, t1.translation, t2.translation) AS translation,
-    IF(t1.author IS NOT NULL, t1.author, t2.author) AS author,
-    IF(t1.modified IS NOT NULL, t1.modified, t2.modified) AS modified,
-    IF(t1.translation IS NOT NULL, 0, 1) as is_base_lang
-    
-FROM
-	i18n_messages m
-	LEFT JOIN i18n_translations t1 ON m.id = t1.id_message AND t1.lang = ?
-	LEFT JOIN i18n_languages l ON l.lang = ?
-	LEFT JOIN i18n_translations t2 ON m.id = t2.id_message AND t2.lang = l.parent_lang
-WHERE
-    $filter_sql
-ORDER BY
-	IF(t1.id_message IS NULL OR t2.id_message IS NULL,0,1),LOWER(CONVERT(m.message USING utf8)),m.id
+        SELECT
+            tbl.id,
+            tbl.message,
+            tbl.comment,
+            tbl.destination_instance as instance,
+            tbl.id_message,
+            tbl.language as lang,
+            tbl.translation,
+            tbl.author,
+            tbl.modified,
+            tbl.is_base_lang
+        FROM (
+                SELECT
+                    m.id,
+                    m.message,
+                    m.comment,
+                    m.instance AS message_instance,
+                    t.instance AS translation_instance,
+                    i.instance AS destination_instance,
+                    ip.instance AS instance_parent,
+                    (
+                        SELECT
+                            COUNT(ip_x.instance) as depth
+                        FROM
+                            i18n_instances i_x
+                                JOIN i18n_instances ip_x ON i_x.lft BETWEEN ip_x.lft AND ip_x.rgt
+                        WHERE
+                            i_x.instance = ip.instance
+                        GROUP BY
+                            i_x.instance
+                    ) as instance_depth,	
+                    m.id AS id_message,
+                    t.lang as origin_language,
+                    l.lang as language,
+                    (
+                        SELECT
+                            COUNT(lp_x.lang) as depth
+                        FROM
+                            i18n_languages l_x
+                                JOIN i18n_languages lp_x ON l_x.lft BETWEEN lp_x.lft AND lp_x.rgt
+                        WHERE
+                            l_x.lang = lp.lang
+                        GROUP BY
+                            l_x.lang
+                    ) as language_depth,	
+                    t.translation AS translation,
+                    t.author AS author,
+                    t.modified AS modified,
+                    IF(t.lang = l.lang, 1, 0) as is_base_lang
+                    
+                FROM
+                    i18n_messages m
+                    LEFT JOIN i18n_languages l ON l.lang = ?
+                    LEFT JOIN i18n_languages lp ON l.lft BETWEEN lp.lft AND lp.rgt	
+                    LEFT JOIN i18n_translations t ON m.id = t.id_message AND t.lang = lp.lang
+                    LEFT JOIN i18n_instances i ON i.instance = ?
+                    LEFT JOIN i18n_instances ip ON i.lft BETWEEN ip.lft AND ip.rgt
+                WHERE
+                    (m.instance = ip.instance OR t.instance = ip.instance)
+                ORDER BY
+                    IF(t.id_message IS NULL,0,1), LOWER(CONVERT(m.message USING utf8)), m.id, t.lang = l.lang DESC
+        ) tbl
+        WHERE
+	        tbl.translation IS NOT NULL
+        GROUP BY tbl.id
 TRANSLATIONS;
 
 		return $this->GetArray( $sql, array(
 		                                   $language,
-		                                   $instance,
 		                                   $instance,
 		                                   'tag' => 'Get all translations for current language'
 		                              ) );
