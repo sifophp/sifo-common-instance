@@ -93,7 +93,7 @@
 
 						<div class="input-append input-prepend">
 							<a href="#" class="copy btn" title="Copy original string" rel="{$t.id|default:''}">&gt;&gt;</a>
-							{if $t.is_base_lang == '1'}
+							{if $t.is_base_lang == 0}
 								<input class="span6" type="text" placeholder="[BASE] {$t.translation|escape:html|default:''}" id="idmsg_{$t.id|default:''}" name="translation"/>
 							{else}
 								<input class="span6" type="text" value="{$t.translation|escape:html|default:''}" id="idmsg_{$t.id|default:''}" name="translation"/>
@@ -132,7 +132,11 @@
 				<a href="{$url.translate|default:''}:{$instance}:{$l.lang|default:''}" title="Translate {$l.english_name|default:''}">{$l.english_name|default:''} ({$l.name|default:''})</a>
 			</td>
 			<td>{if $l.missing == 0}Translation complete{else}{$l.missing|default:''} strings missing{/if}</td>
-			<td class="btn-{if $l.percent >95}success{elseif $l.percent > 70}warning{else}danger{/if}">{$l.percent|default:''}%</td>
+			{if isset($l.percent)}
+				<td class="btn-{if $l.percent >95}success{elseif $l.percent > 70}warning{else}danger{/if} btn-">{$l.percent|default:''}%</td>
+			{else}
+				<td style="background-color: darkgray;"></td>
+			{/if}
 		</tr>
 			{/foreach}
 </table>

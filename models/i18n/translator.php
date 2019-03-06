@@ -17,17 +17,17 @@ class I18nTranslatorModel extends \Sifo\Model
 	{
         $sql = <<<TRANSLATIONS
         SELECT
-            tbl.id,
-            tbl.message,
-            tbl.comment,
-            tbl.destination_instance as instance,
-            tbl.id_message,
-            tbl.language as lang,
-            tbl.translation,
-            tbl.author,
-            tbl.modified,
-            tbl.is_base_lang
-        FROM (
+         id,
+         message,
+         comment,
+         SUBSTRING_INDEX(GROUP_CONCAT(destination_instance ORDER BY language_depth DESC, instance_depth DESC SEPARATOR '##-##'),'##-##',1) as destination_instance,
+         SUBSTRING_INDEX(GROUP_CONCAT(language ORDER BY language_depth DESC, instance_depth DESC SEPARATOR '##-##'),'##-##',1) as language,
+         SUBSTRING_INDEX(GROUP_CONCAT(translation ORDER BY language_depth DESC, instance_depth DESC SEPARATOR '##-##'),'##-##',1) as translation,
+         SUBSTRING_INDEX(GROUP_CONCAT(author ORDER BY language_depth DESC, instance_depth DESC SEPARATOR '##-##'),'##-##',1) as author,
+         SUBSTRING_INDEX(GROUP_CONCAT(modified ORDER BY language_depth DESC, instance_depth DESC SEPARATOR '##-##'),'##-##',1) as modified,
+         SUBSTRING_INDEX(GROUP_CONCAT(is_base_lang ORDER BY language_depth DESC, instance_depth DESC SEPARATOR '##-##'),'##-##',1) as is_base_lang
+        FROM
+            (
                 SELECT
                     m.id,
                     m.message,
@@ -43,11 +43,10 @@ class I18nTranslatorModel extends \Sifo\Model
                             i18n_instances i_x
                                 JOIN i18n_instances ip_x ON i_x.lft BETWEEN ip_x.lft AND ip_x.rgt
                         WHERE
-                            i_x.instance = ip.instance
+                            i_x.instance = t.instance
                         GROUP BY
                             i_x.instance
                     ) as instance_depth,	
-                    m.id AS id_message,
                     t.lang as origin_language,
                     l.lang as language,
                     (
@@ -74,13 +73,11 @@ class I18nTranslatorModel extends \Sifo\Model
                     LEFT JOIN i18n_instances i ON i.instance = ?
                     LEFT JOIN i18n_instances ip ON i.lft BETWEEN ip.lft AND ip.rgt
                 WHERE
-                    (m.instance = ip.instance OR t.instance = ip.instance)
+                    t.instance = ip.instance
                 ORDER BY
                     IF(t.id_message IS NULL,0,1), LOWER(CONVERT(m.message USING utf8)), m.id, t.lang = l.lang DESC
         ) tbl
-        WHERE
-	        tbl.translation IS NOT NULL
-        GROUP BY tbl.id
+        GROUP BY id;
 TRANSLATIONS;
 
 		return $this->GetArray( $sql, array(
