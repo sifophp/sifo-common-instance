@@ -88,11 +88,7 @@ class I18nRebuildController extends \Sifo\Controller
 				}
 			}
 
-			// Get instance inheritance.
-			$include_parent_instance = $this->getIncludeInheritance( $instance, $language );
-
 			$buffer = "<?php
-$include_parent_instance
 
 \n// Translations file, lang='$language'\n// Empty strings: $empty[$language]\n$empty_strings_buffer\n// Completed strings:\n$buffer\n?>";
 			$path = ROOT_PATH . '/instances/' . $instance . '/locale/messages_' .$language .'.php';
@@ -128,23 +124,5 @@ $include_parent_instance
 		$item .= "\";\n";
 
 		return $item;
-	}
-
-	protected function getIncludeInheritance( $instance, $language )
-	{
-		$instance_domains 		= $this->getConfig( 'domains', $instance );
-		$instance_inheritance 	= array();
-		if ( isset( $instance_domains['instance_inheritance'] ) )
-		{
-			$instance_inheritance 	=  $instance_domains['instance_inheritance'];
-		}
-
-		$instance_parent = array_pop( $instance_inheritance );
-
-		if ( !empty( $instance_parent ) && $instance_parent != 'common' )
-		{
-			return "include ROOT_PATH . '/instances/{$instance_parent}/locale/messages_$language.php';";
-		}
-		return '';
 	}
 }
