@@ -90,7 +90,7 @@ class I18nRebuildController extends \Sifo\Controller
 
 			$buffer = "<?php
 
-\n// Translations file, lang='$language'\n// Empty strings: $empty[$language]\n$empty_strings_buffer\n// Completed strings:\n$buffer\n?>";
+\n// Translations file, lang='$language'\n// Empty strings: $empty[$language]\n$empty_strings_buffer\n// Completed strings:\n$buffer";
 			$path = ROOT_PATH . '/instances/' . $instance . '/locale/messages_' .$language .'.php';
 			$write = @file_put_contents( $path, $buffer );
 
