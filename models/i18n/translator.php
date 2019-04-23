@@ -7,19 +7,19 @@ namespace Common;
  */
 class I18nTranslatorModel extends \Sifo\Model
 {
-	/**
-	 * Returns the translations list for a given langauge.
-	 *
-	 * @param string $language
-	 * @return array
-	 */
-	public function getTranslations( $language, $instance, $parent_instance = false )
+    /**
+     * @param string $language
+     * @param $instance
+     * @return array
+     */
+	public function getTranslations( $language, $instance)
 	{
         $sql = <<<TRANSLATIONS
         SELECT
          id,
          message,
          comment,
+         message_instance,
          SUBSTRING_INDEX(GROUP_CONCAT(destination_instance ORDER BY language_depth DESC, instance_depth DESC SEPARATOR '##-##'),'##-##',1) as destination_instance,
          SUBSTRING_INDEX(GROUP_CONCAT(language ORDER BY language_depth DESC, instance_depth DESC SEPARATOR '##-##'),'##-##',1) as language,
          SUBSTRING_INDEX(GROUP_CONCAT(translation ORDER BY language_depth DESC, instance_depth DESC SEPARATOR '##-##'),'##-##',1) as translation,
@@ -69,15 +69,16 @@ class I18nTranslatorModel extends \Sifo\Model
                     i18n_messages m
                     LEFT JOIN i18n_languages l ON l.lang = ?
                     LEFT JOIN i18n_languages lp ON l.lft BETWEEN lp.lft AND lp.rgt	
-                    LEFT JOIN i18n_translations t ON m.id = t.id_message AND t.lang = lp.lang
                     LEFT JOIN i18n_instances i ON i.instance = ?
                     LEFT JOIN i18n_instances ip ON i.lft BETWEEN ip.lft AND ip.rgt
-                WHERE
-                    t.instance = ip.instance
+                    LEFT JOIN i18n_translations t ON m.id = t.id_message AND t.lang = lp.lang AND t.instance = ip.instance                
+                    
                 ORDER BY
                     IF(t.id_message IS NULL,0,1), LOWER(CONVERT(m.message USING utf8)), m.id, t.lang = l.lang DESC
         ) tbl
-        GROUP BY id;
+        GROUP BY id
+        ORDER BY
+        	is_base_lang, modified DESC
 TRANSLATIONS;
 
 		return $this->GetArray( $sql, array(
