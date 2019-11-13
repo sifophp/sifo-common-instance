@@ -238,7 +238,7 @@ class ManagerRebuildController extends \Sifo\Controller
                             case 'config':
                                 if ( $rel_path == 'configuration_files' )
                                 {
-                                    continue;
+                                    continue 2;
                                 }
                             case 'templates':
                             default:
