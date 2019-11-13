@@ -78,7 +78,7 @@
 	</tr>
 	</thead>
 	<tbody>
-		        {foreach from=$translations key=key item=t}
+		{foreach from=$translations key=key item=t}
 		<tr>
 			<td>
 				<label for="idmsg_{$t.id|default:''}" id="label_{$t.id|default:''}">{$t.message|escape:'html'|default:''|wordwrap:40:'<br />':true}</label>
@@ -93,7 +93,7 @@
 
 						<div class="input-append input-prepend">
 							<a href="#" class="copy btn" title="Copy original string" rel="{$t.id|default:''}">&gt;&gt;</a>
-							{if $t.is_base_lang == 0}
+							{if $t.is_base_lang == 0 && $t.translation}
 								<input class="span6" type="text" placeholder="[BASE] {$t.translation|escape:html|default:''}" id="idmsg_{$t.id|default:''}" name="translation"/>
 							{else}
 								<input class="span6" type="text" value="{$t.translation|escape:html|default:''}" id="idmsg_{$t.id|default:''}" name="translation"/>
@@ -110,10 +110,12 @@
 				{/if}
 			</td>
 			<td>
-				<small>{$t.modified|default:''}<br/>by {$t.author|truncate:10|default:''}</small>
+				{if $t.modified}
+					<small>{$t.modified|default:''}<br/>{if $t.author}by {$t.author|truncate:10|default:''}{/if}</small>
+				{/if}
 			</td>
 		</tr>
-				{/foreach}
+		{/foreach}
 	</tbody>
 </table>
 	    {else}
