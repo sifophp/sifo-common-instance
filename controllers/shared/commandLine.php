@@ -505,6 +505,11 @@ abstract class SharedCommandLineController extends \Sifo\Controller
 
 	private function _startScript()
 	{
+        if ( extension_loaded( 'newrelic' ) )
+        {
+            newrelic_name_transaction( $this->params['controller'] );
+        }
+
 		$this->showMessage( 'Script ' . $this->_script_name . ' in ' . $this->_domain_name . ' started at:' . date( 'd-M-Y H:i:s' ) );
 		$this->showMessage( '* Running in TEST MODE.',self::TEST );
 		$this->showMessage( '* Running in VERBOSE MODE.',self::VERBOSE );
