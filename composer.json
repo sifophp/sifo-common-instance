@@ -6,7 +6,7 @@
   "homepage": "https://github.com/sifophp/SIFO",
   "type": "library",
   "require": {
-    "php": ">=5.3.2",
+    "php": ">=5.6",
     "tpyo/amazon-s3-php-class": "0.5.*"
   },
   "autoload": {

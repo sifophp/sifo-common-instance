@@ -18,7 +18,7 @@ class I18nRebuildController extends Controller
 {
     public $is_json = true;
     /** @var I18nTranslatorModel */
-    private $i18n_translator_model;
+    protected $i18n_translator_model;
 
     /**
      * @throws Exception_404
@@ -58,7 +58,7 @@ class I18nRebuildController extends Controller
         $this->i18n_translator_model = new I18nTranslatorModel();
     }
 
-    private function getInstance()
+    protected function getInstance()
     {
         $params = $this->getParams();
         $instance = $this->instance;
@@ -70,7 +70,7 @@ class I18nRebuildController extends Controller
         return $instance;
     }
 
-    private function getInheritanceInstance($an_instance)
+    protected function getInheritanceInstance($an_instance)
     {
         $instance_domains = $this->getConfig('domains', $an_instance);
         $instance_inheritance = [];
@@ -93,7 +93,7 @@ class I18nRebuildController extends Controller
         return $is_parent_instance;
     }
 
-    private function getLanguages()
+    protected function getLanguages()
     {
         $language_list = [];
         $languages_in_DB = $this->i18n_translator_model->getDifferentLanguages();
@@ -105,7 +105,7 @@ class I18nRebuildController extends Controller
         return $language_list;
     }
 
-    private function getTranslations(
+    protected function getTranslations(
         array $languages,
         $an_instance
     ) {
@@ -128,7 +128,7 @@ class I18nRebuildController extends Controller
         return $translations;
     }
 
-    private function generateTranslationFiles(
+    protected function generateTranslationFiles(
         array $a_languages,
         array $a_translations,
         $an_instance
