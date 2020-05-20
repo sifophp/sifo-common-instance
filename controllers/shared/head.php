@@ -17,7 +17,6 @@ class SharedHeadController extends \Sifo\Controller
 
 		$params = $this->getParams();
 		$this->assign( 'path', $params['path'] );
-		$this->getClass( 'Metadata', false );
 
 		if ( null == \Sifo\Metadata::get() )
 		{
